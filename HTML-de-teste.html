@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecionando...</title>
+  <script>
+    async function redirecionar() {
+      try {
+        // Pegando o link da célula A1
+        const sheetURL = 'https://docs.google.com/spreadsheets/d/1fab7IPGtRCsTXZUXTWv-ZLgQFLtAJ8UWLL0kBdru_-M/gviz/tq?tqx=out:csv&sheet=Página1';
+        const response = await fetch(sheetURL);
+        const text = await response.text();
+        const linkAtual = text.trim();
+
+        // Redireciona para o link
+        window.location.href = linkAtual;
+
+        // Chama a função alternarLink no App Script
+        fetch('https://script.google.com/macros/s/AKfycbyUeRnQv0cCokccQIntm1g0k2oyZzEIAHOu__cWcFDH9KfjAzyNclmhSBI1NnJ3xKmeKA/exec');
+        
+      } catch (e) {
+        console.error("Erro ao redirecionar:", e);
+      }
+    }
+    window.onload = redirecionar;
+  </script>
+</head>
+<body>
+  <h1>Redirecionando, aguarde...</h1>
+</body>
+</html>
